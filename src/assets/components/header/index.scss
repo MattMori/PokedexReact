@@ -1,0 +1,27 @@
+.Header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: #303030;
+
+  
+    h1 {
+      color: rgb(247, 247, 247);
+      display: inline-block;
+      text-decoration: none;
+    }
+  
+    input {
+      padding: 0.5rem 2rem;
+      border-radius: 15px;
+      border: none;
+      color: #000000;
+    }
+  
+    input:focus {
+      border: none;
+      outline: none;
+    }
+
+  }
