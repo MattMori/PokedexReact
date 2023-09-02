@@ -1,15 +1,15 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { getPokemonInfo, getImageURL} from '../../api/PokeApi';
+import { getPokemonInfo, getImageURL } from '../api/PokeApi';
 import './PokeInfo.scss';
 
 const PokeInfo = () => {
-  const { id } = useParams();  
+  const { id } = useParams();
   const [pokemon, setPokemon] = useState(null);
 
   useEffect(() => {
     const getPokemonDetails = async () => {
-      const response = await getPokemonInfo(id); 
+      const response = await getPokemonInfo(id);
       setPokemon(response);
     };
 
@@ -20,7 +20,7 @@ const PokeInfo = () => {
     return <div>Carregando...</div>;
   }
 
-  
+
   return (
     <div className={`PokeInfo ${pokemon.types[0].type.name}`}>
       <div className='pokemon-image'>
@@ -28,10 +28,12 @@ const PokeInfo = () => {
         <img src={getImageURL(id)} alt={name} />
       </div>
       <div className='PokeDetail'>
-      <p className="number">ID: {pokemon.id}</p>
+        <p className="number">ID: {pokemon.id}</p>
         <p>Altura: {pokemon.height} decímetros</p>
         <p>Peso: {pokemon.weight} KG</p>
-        <p  className='PokeTypes'>Tipos:{pokemon.types.map((type) => type.type.name).join(', ')}</p>
+        <div className='PokeTypes'>Tipos:
+        {pokemon.types.map((type) => type.type.name).join(', ')}
+        </div>
         <p>Habilidades: {pokemon.abilities.map((ability) => ability.ability.name).join(', ')}</p>
         <p>Estatísticas:</p>
         <ul>

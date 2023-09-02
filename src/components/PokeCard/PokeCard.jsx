@@ -1,6 +1,6 @@
  import { Link } from 'react-router-dom';
 import './index.scss';  
-import  {getImageURL} from "../../../api/PokeApi";
+import  {getImageURL} from "../../api/PokeApi";
  
 const PokeCard = ({ pokemon }) => {
   const { id, name, types } = pokemon;

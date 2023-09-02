@@ -1,5 +1,5 @@
 import PokeCard from "../components/PokeCard/PokeCard";
-import { getPokemonInfo } from "../../api/PokeApi"
+import { getPokemonInfo } from "../api/PokeApi"
 import { useEffect, useState } from "react";
 import './ListPokemon.scss'
 

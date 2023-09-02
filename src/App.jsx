@@ -1,7 +1,7 @@
 import { Routes, Route } from "react-router-dom";
-import Header from './assets/components/header/Header'
-import ListPokemon from "./assets/pages/ListPokemon";
-import PokeInfo from './assets/pages/PokeInfo'
+import Header from './components/header/Header'
+import ListPokemon from "./pages/ListPokemon";
+import PokeInfo from './pages/PokeInfo'
 
 function App() {
    
