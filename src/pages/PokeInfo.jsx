@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import { getPokemonInfo, getImageURL } from '../api/PokeApi';
 import './PokeInfo.scss';
 
+
 const PokeInfo = () => {
   const { id } = useParams();
   const [pokemon, setPokemon] = useState(null);
@@ -20,23 +21,31 @@ const PokeInfo = () => {
     return <div>Carregando...</div>;
   }
 
+  const { types } = pokemon;
+  const typeClass = types.map((type) => type.type.name).join(' ');
 
   return (
-    <div className={`PokeInfo ${pokemon.types[0].type.name}`}>
-      <div className='pokemon-image'>
-        <h1 className='name'>Detalhes do {pokemon.name}</h1>
-        <img src={getImageURL(id)} alt={name} />
+    <div className={`PokeInfo ${typeClass}`}>
+              
+              <div className='pokemon-image'>
+        <h1 className='name'>Detalhes do {pokemon.name}<span className="number">#{pokemon.id}</span></h1>
+        <img src={getImageURL(id)} alt={pokemon.name} />
       </div>
       <div className='PokeDetail'>
-        <p className="number">ID: {pokemon.id}</p>
+
         <p>Altura: {pokemon.height} decímetros</p>
-        <p>Peso: {pokemon.weight} KG</p>
-        <div className='PokeTypes'>Tipos:
-        {pokemon.types.map((type) => type.type.name).join(', ')}
+        <p>Peso: {(parseFloat(pokemon.weight) / 10).toFixed(1).replace('.', ',')} kg</p>
+        <div className='PokeTypes'>
+          {types.map((type) => (
+            <span key={type.type.name} className={`type ${type.type.name}`}>
+              {type.type.name}
+            </span>
+          ))}
         </div>
         <p>Habilidades: {pokemon.abilities.map((ability) => ability.ability.name).join(', ')}</p>
+        
         <p>Estatísticas:</p>
-        <ul>
+         <ul>
           {pokemon.stats.map((stat) => (
             <li key={stat.stat.name}>
               {stat.stat.name}: {stat.base_stat}

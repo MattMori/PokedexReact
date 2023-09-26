@@ -16,6 +16,8 @@ export async function getPokemonInfo(pokemonId) {
     }
   }
   
+
+  
   export const getImageURL = ( pokemonId ) => {
     const baseURL = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other';
   
